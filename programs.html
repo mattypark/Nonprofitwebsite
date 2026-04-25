@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Programs — Axiom</title>
+<meta name="description" content="Axiom runs two divisions — Research and Startup — that collaborate to turn high school curiosity into shipped work." />
+<link rel="preconnect" href="https://api.fontshare.com" crossorigin />
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,300i,400i,500i,700i&f[]=neue-montreal@300,400,500,700,300i,400i,500i,700i&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+</head>
+<body>
+
+<div class="topbar">
+  <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menuOverlay" aria-label="Open menu">
+    <span class="menu-ico" aria-hidden="true">
+      <svg viewBox="0 0 32 32">
+        <line class="m-line" x1="2"  y1="10" x2="30" y2="10"/>
+        <line class="m-line" x1="2"  y1="22" x2="30" y2="22"/>
+        <line class="m-line" x1="10" y1="2"  x2="10" y2="30"/>
+        <line class="m-line" x1="22" y1="2"  x2="22" y2="30"/>
+        <circle class="m-dot" cx="10" cy="10" r="3.2"/>
+        <circle class="m-dot" cx="10" cy="22" r="3.2"/>
+        <circle class="m-dot" cx="22" cy="22" r="3.2"/>
+        <path class="m-arrow-line" d="M10 22 L22 10"/>
+        <path class="m-arrow-head" d="M22 10 L17 10 M22 10 L22 15"/>
+      </svg>
+    </span>
+  </button>
+</div>
+
+<!-- Menu overlay (shared) -->
+<div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-label="Site menu">
+  <div class="menu-overlay-top">
+    <span class="menu-overlay-brand">
+      <span class="mk" aria-hidden="true"></span>
+      <span>Axiom</span>
+      <span class="slash">/</span>
+      <span class="ix">Index · 05</span>
+    </span>
+    <button class="menu-close" id="menuClose" type="button">Close <span class="x" aria-hidden="true">×</span></button>
+  </div>
+    <div class="menu-columns">
+    <a class="menu-col" href="about.html">
+      <span class="menu-col-glyph">// Axiom · 01</span>
+      <div class="menu-col-num"><span>01 — About</span><span class="dot"></span></div>
+      <div class="menu-col-rule"></div>
+      <h3 class="menu-col-title">About<span class="tdot" aria-hidden="true"></span></h3>
+      <p class="menu-col-desc">The founders, who we are, and the journal that publishes our work.</p>
+    </a>
+    <a class="menu-col" href="programs.html">
+      <span class="menu-col-glyph">// Axiom · 02</span>
+      <div class="menu-col-num"><span>02 — Programs</span><span class="dot"></span></div>
+      <div class="menu-col-rule"></div>
+      <h3 class="menu-col-title">Programs<span class="tdot" aria-hidden="true"></span></h3>
+      <p class="menu-col-desc">Two divisions — Research and Startup — where curiosity becomes shipped work.</p>
+    </a>
+    <a class="menu-col" href="research.html">
+      <span class="menu-col-glyph">// Axiom · 03</span>
+      <div class="menu-col-num"><span>03 — Research</span><span class="dot"></span></div>
+      <div class="menu-col-rule"></div>
+      <h3 class="menu-col-title">Research<span class="tdot" aria-hidden="true"></span></h3>
+      <p class="menu-col-desc">More rigorous, more collaborative, more published — built for high schoolers.</p>
+    </a>
+    <a class="menu-col" href="apply.html">
+      <span class="menu-col-glyph">// Axiom · 04</span>
+      <div class="menu-col-num"><span>04 — Apply</span><span class="dot"></span></div>
+      <div class="menu-col-rule"></div>
+      <h3 class="menu-col-title">Apply<span class="tdot" aria-hidden="true"></span></h3>
+      <p class="menu-col-desc">Openings for researchers, builders, and the founding team. Fall '26.</p>
+    </a>
+    <a class="menu-col" href="faq.html">
+      <span class="menu-col-glyph">// Axiom · 05</span>
+      <div class="menu-col-num"><span>05 — FAQ</span><span class="dot"></span></div>
+      <div class="menu-col-rule"></div>
+      <h3 class="menu-col-title">FAQ<span class="tdot" aria-hidden="true"></span></h3>
+      <p class="menu-col-desc">Questions about cost, time, eligibility, and joining the founding team.</p>
+    </a>
+  </div>
+  <div class="menu-overlay-bottom">
+    <span>System online</span>
+    <span><span class="m-blip" aria-hidden="true"></span> Fall '26 cohort · applications open</span>
+    <span>Louisville / KY</span>
+  </div>
+</div>
+
+<!-- Subpage hero -->
+<header class="subhero reveal">
+  <div class="crumbs">
+    <a href="index.html">Axiom</a><span class="slash">/</span><span class="current">Programs</span>
+  </div>
+  <h1>Two divisions, <em>one loop.</em></h1>
+  <p class="lede">Most high school programs stop at the paper. Most internships never touch research. Axiom runs both — a Research Division that publishes, and a Startup Division that ships — and wires them together so findings become products and problems become questions.</p>
+  <div class="subhero-meta">
+    <span>Cohort length<strong>8 weeks</strong></span>
+    <span>Team size<strong>3–5 students</strong></span>
+    <span>Output<strong>Paper + artifact</strong></span>
+  </div>
+</header>
+
+<section>
+  <div class="section-head reveal">
+    <div>
+      <div class="section-eyebrow">— The two divisions</div>
+      <h2 class="section-title">Research that ships. Internships that <em>think.</em></h2>
+    </div>
+    <p class="section-sub">Every student picks a division. Teams are small. Output is real. The divisions aren't walled off — they trade questions and answers across the cohort.</p>
+  </div>
+
+  <div class="divisions stagger reveal">
+
+    <article class="div-card" id="research">
+      <div class="div-k">01 — Research Division</div>
+      <h3>Teams that publish <em>and build.</em></h3>
+      <p>Students work in teams of 3–5 on focused AI/ML questions, guided by a mentor and a clear publication target. Every research project is paired with a follow-through: a prototype, a tool, a model, or an open-source repo. If you publish a paper with Axiom, you ship something with it.</p>
+      <ul class="div-list">
+        <li>Focused topics in AI, ML, and CS — chosen by the team</li>
+        <li>Mentor-guided weekly syncs and milestone reviews</li>
+        <li>Output: a peer-reviewed paper <em>plus</em> an applied artifact</li>
+        <li>Published on the Axiom Journal — a mini arXiv for high school research</li>
+      </ul>
+      <span class="div-tag"><span class="dot"></span> Paper + artifact · 8-week sprints</span>
+    </article>
+
+    <article class="div-card is-dark" id="startup">
+      <div class="div-k">02 — Startup Division</div>
+      <h3>Embedded with <em>real startups.</em></h3>
+      <p>Students get placed with partner startups to work on a specific scoped project — as an intern, shadow, or embedded contributor. Real product work, real engineering, real problems. Think of it as a structured way for high schoolers to get their hands on the work that usually requires being a college junior with a network.</p>
+      <ul class="div-list">
+        <li>Scoped project inside an early- or growth-stage startup</li>
+        <li>Mentorship directly from founders and engineers</li>
+        <li>Output: shipped work — a feature, a tool, a research spike, an internal model</li>
+        <li>Matched by interest, not connections</li>
+      </ul>
+      <span class="div-tag"><span class="dot"></span> Embedded · 8-week placements</span>
+    </article>
+
+  </div>
+
+  <div class="loop reveal" id="loop">
+    <div>
+      <div class="kw">— Cross-division collaboration</div>
+      <h4>Research → application → new questions → more research.</h4>
+      <p>Research teams surface findings that startup teams can apply to a partner's problem. Startup teams surface real-world problems that research teams can dig into. The loop is the point — high schoolers get both the depth <em>and</em> the ship-it experience.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Programs (3 pillars) -->
+<section>
+  <div class="section-head reveal">
+    <div>
+      <div class="section-eyebrow">— The three pillars</div>
+      <h2 class="section-title">Real output, not <em>just ideas.</em></h2>
+    </div>
+    <p class="section-sub">Every cohort moves through three programs designed to turn curiosity into publishable work and shipped projects.</p>
+  </div>
+
+  <div class="programs stagger reveal">
+    <article class="prog">
+      <div class="num">01 / Research Teams</div>
+      <h3>Small groups.<br/>Serious questions.</h3>
+      <p>Students work in teams of 3–5 on focused topics across AI, ML, and data science — guided by a mentor and a clear publication target.</p>
+      <span class="tag"><span class="dot"></span> 8-week sprints</span>
+    </article>
+    <article class="prog">
+      <div class="num">02 / Build Projects</div>
+      <h3>Apps, tools,<br/>AI models.</h3>
+      <p>Each team ships something real: an AI tutor, a productivity tool, a model benchmark, a research demo. Working code, on GitHub.</p>
+      <span class="tag"><span class="dot"></span> Open source by default</span>
+    </article>
+    <article class="prog">
+      <div class="num">03 / Publishing Platform</div>
+      <h3>A journal<br/>that's theirs.</h3>
+      <p>Finished work gets published on the Axiom Journal — a mini arXiv for student research, designed to be read, cited, and linked.</p>
+      <span class="tag"><span class="dot"></span> Peer-reviewed</span>
+    </article>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="join">
+  <div class="section-eyebrow reveal">— Ready to jump in?</div>
+  <h2 class="section-title reveal">Pick a division. <em>Apply.</em></h2>
+  <p class="sub reveal">Applications for the Fall 2026 cohort are open. Researchers, builders, and founding-team leads welcome.</p>
+  <a class="btn btn-primary reveal" href="apply.html">Apply to Axiom <span class="arrow">→</span></a>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="big"><em>Build real things.</em> Publish them. Help the next high schooler do the same.</div>
+  <div class="fi">
+    <div>
+      <a class="logo" href="index.html" style="color:#fff"><span class="mark" style="background:radial-gradient(circle at 30% 30%, #fff 0%, #8aa0ff 40%, #1f46ff 100%)"></span> Axiom</a>
+      <p style="color:rgba(255,255,255,.55);font-size:13.5px;max-width:320px;margin-top:16px;line-height:1.55">A student-led nonprofit giving high schoolers the teams, mentorship, and platform to do real AI research.</p>
+    </div>
+    <div>
+      <h6>Programs</h6>
+      <ul>
+        <li><a href="programs.html#research">Research Division</a></li>
+        <li><a href="programs.html#startup">Startup Division</a></li>
+        <li><a href="research.html">Research</a></li>
+      </ul>
+    </div>
+    <div>
+      <h6>Organization</h6>
+      <ul>
+        <li><a href="about.html">About</a></li>
+        <li><a href="about.html#journal">Journal</a></li>
+        <li><a href="apply.html">Apply</a></li>
+      </ul>
+    </div>
+    <div>
+      <h6>Connect</h6>
+      <ul>
+        <li><a href="#">Email</a></li>
+        <li><a href="#">LinkedIn</a></li>
+        <li><a href="#">GitHub</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="bottom">
+    <span>© 2026 AXIOM — A 501(c)(3) IN FORMATION</span>
+    <span>LOUISVILLE, KY</span>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
