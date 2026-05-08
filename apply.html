@@ -4,224 +4,181 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Apply — Axiom</title>
-<meta name="description" content="Apply to Axiom — researcher, builder, or founding team. Fall 2026 cohort." />
-<link rel="preconnect" href="https://api.fontshare.com" crossorigin />
-<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,300i,400i,500i,700i&f[]=neue-montreal@300,400,500,700,300i,400i,500i,700i&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css" />
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+<meta name="description" content="Apply to join an Axiom chapter, lead one in your city, or join the founding team." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300..700;1,300..700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="axiom.css" />
 </head>
 <body>
 
-<div class="topbar">
-  <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menuOverlay" aria-label="Open menu">
-    <span class="menu-ico" aria-hidden="true">
-      <svg viewBox="0 0 32 32">
-        <line class="m-line" x1="2"  y1="10" x2="30" y2="10"/>
-        <line class="m-line" x1="2"  y1="22" x2="30" y2="22"/>
-        <line class="m-line" x1="10" y1="2"  x2="10" y2="30"/>
-        <line class="m-line" x1="22" y1="2"  x2="22" y2="30"/>
-        <circle class="m-dot" cx="10" cy="10" r="3.2"/>
-        <circle class="m-dot" cx="10" cy="22" r="3.2"/>
-        <circle class="m-dot" cx="22" cy="22" r="3.2"/>
-        <path class="m-arrow-line" d="M10 22 L22 10"/>
-        <path class="m-arrow-head" d="M22 10 L17 10 M22 10 L22 15"/>
-      </svg>
-    </span>
-  </button>
-</div>
+<span class="corner-tag tl">Axiom <span class="sep">/</span> Apply · 04</span>
+<span class="corner-tag tr">Fall '26 <span class="sep">·</span> rolling review</span>
 
-<!-- Menu overlay (shared) -->
+<button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menuOverlay" aria-label="Open menu">
+  <i></i><i></i><i></i><i></i>
+</button>
+
 <div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-label="Site menu">
-  <div class="menu-overlay-top">
-    <span class="menu-overlay-brand">
-      <span class="mk" aria-hidden="true"></span>
-      <span>Axiom</span>
-      <span class="slash">/</span>
-      <span class="ix">Index · 05</span>
-    </span>
+  <div class="menu-top">
+    <span class="brand"><span class="mk"></span><span>Axiom</span><span class="slash">/</span><span>Index · 06</span></span>
     <button class="menu-close" id="menuClose" type="button">Close <span class="x" aria-hidden="true">×</span></button>
   </div>
-    <div class="menu-columns">
-    <a class="menu-col" href="about.html">
+  <div class="menu-cols">
+    <a class="menu-col" href="index.html">
       <span class="menu-col-glyph">// Axiom · 01</span>
-      <div class="menu-col-num"><span>01 — About</span><span class="dot"></span></div>
+      <div class="menu-col-num"><span>01 — Home</span><span class="dot"></span></div>
       <div class="menu-col-rule"></div>
-      <h3 class="menu-col-title">About<span class="tdot" aria-hidden="true"></span></h3>
-      <p class="menu-col-desc">The founders, who we are, and the journal that publishes our work.</p>
+      <h3 class="menu-col-title">Home<em>.</em></h3>
+      <p class="menu-col-desc">Back to the landing — the I'm-curious-about picker and the Axiom front door.</p>
+    </a>
+    <a class="menu-col" href="about.html">
+      <span class="menu-col-glyph">// Axiom · 02</span>
+      <div class="menu-col-num"><span>02 — About</span><span class="dot"></span></div>
+      <div class="menu-col-rule"></div>
+      <h3 class="menu-col-title">About<em>.</em></h3>
+      <p class="menu-col-desc">The founders, the mission, and our partnership with Stanford KID.</p>
     </a>
     <a class="menu-col" href="programs.html">
-      <span class="menu-col-glyph">// Axiom · 02</span>
-      <div class="menu-col-num"><span>02 — Programs</span><span class="dot"></span></div>
-      <div class="menu-col-rule"></div>
-      <h3 class="menu-col-title">Programs<span class="tdot" aria-hidden="true"></span></h3>
-      <p class="menu-col-desc">Two divisions — Research and Startup — where curiosity becomes shipped work.</p>
-    </a>
-    <a class="menu-col" href="research.html">
       <span class="menu-col-glyph">// Axiom · 03</span>
-      <div class="menu-col-num"><span>03 — Research</span><span class="dot"></span></div>
+      <div class="menu-col-num"><span>03 — Programs</span><span class="dot"></span></div>
       <div class="menu-col-rule"></div>
-      <h3 class="menu-col-title">Research<span class="tdot" aria-hidden="true"></span></h3>
-      <p class="menu-col-desc">More rigorous, more collaborative, more published — built for high schoolers.</p>
+      <h3 class="menu-col-title">Programs<em>.</em></h3>
+      <p class="menu-col-desc">AI, computer science, and marketing — the foundations of modern startups.</p>
+    </a>
+    <a class="menu-col" href="chapters.html">
+      <span class="menu-col-glyph">// Axiom · 04</span>
+      <div class="menu-col-num"><span>04 — Chapters</span><span class="dot"></span></div>
+      <div class="menu-col-rule"></div>
+      <h3 class="menu-col-title">Chapters<em>.</em></h3>
+      <p class="menu-col-desc">A worldwide network of student chapters where the program runs.</p>
     </a>
     <a class="menu-col" href="apply.html">
-      <span class="menu-col-glyph">// Axiom · 04</span>
-      <div class="menu-col-num"><span>04 — Apply</span><span class="dot"></span></div>
+      <span class="menu-col-glyph">// Axiom · 05</span>
+      <div class="menu-col-num"><span>05 — Apply</span><span class="dot"></span></div>
       <div class="menu-col-rule"></div>
-      <h3 class="menu-col-title">Apply<span class="tdot" aria-hidden="true"></span></h3>
-      <p class="menu-col-desc">Openings for researchers, builders, and the founding team. Fall '26.</p>
+      <h3 class="menu-col-title">Apply<em>.</em></h3>
+      <p class="menu-col-desc">Join a chapter, lead one, or step into the founding team.</p>
     </a>
     <a class="menu-col" href="faq.html">
-      <span class="menu-col-glyph">// Axiom · 05</span>
-      <div class="menu-col-num"><span>05 — FAQ</span><span class="dot"></span></div>
+      <span class="menu-col-glyph">// Axiom · 06</span>
+      <div class="menu-col-num"><span>06 — FAQ</span><span class="dot"></span></div>
       <div class="menu-col-rule"></div>
-      <h3 class="menu-col-title">FAQ<span class="tdot" aria-hidden="true"></span></h3>
-      <p class="menu-col-desc">Questions about cost, time, eligibility, and joining the founding team.</p>
+      <h3 class="menu-col-title">FAQ<em>.</em></h3>
+      <p class="menu-col-desc">Eligibility, time commitment, internships, and joining a chapter.</p>
     </a>
   </div>
-  <div class="menu-overlay-bottom">
+  <div class="menu-bottom">
     <span>System online</span>
-    <span><span class="m-blip" aria-hidden="true"></span> Fall '26 cohort · applications open</span>
-    <span>Louisville / KY</span>
+    <span><span class="blip" aria-hidden="true"></span> Fall '26 cohort · applications open</span>
+    <span>Global · partnered with Stanford KID</span>
   </div>
 </div>
 
-<!-- Subpage hero -->
 <header class="subhero reveal">
-  <div class="crumbs">
-    <a href="index.html">Axiom</a><span class="slash">/</span><span class="current">Apply</span>
-  </div>
-  <h1>Curious. Ambitious. <em>Unafraid to ship.</em></h1>
-  <p class="lede">If you're a high schooler who wants to build, research, and publish alongside peers who take the work as seriously as you do, Axiom is for you. Three tracks — one cohort.</p>
+  <div class="crumbs"><a href="index.html">Axiom</a><span class="slash">/</span><span class="current">Apply</span></div>
+  <h1>Three ways <em>in.</em></h1>
+  <p class="lede">There are three ways to join Axiom — as a member of a chapter, as a chapter lead in your city, or as part of the founding team. Each path runs the same program and feeds the same global pipeline.</p>
   <div class="subhero-meta">
-    <span>Cohort<strong>Fall 2026</strong></span>
-    <span>Commitment<strong>5–8 hrs / week</strong></span>
-    <span>Tuition<strong>Free</strong></span>
+    <span>Cohort<strong>Fall '26</strong></span>
+    <span>Review<strong>Rolling, by passion</strong></span>
+    <span>Cost<strong>Free for all members</strong></span>
   </div>
 </header>
 
-<!-- Apply body -->
-<section>
-  <div class="apply-grid">
-    <aside class="apply-side reveal">
-      <h3>How to <em>apply.</em></h3>
-      <p>Tell us who you are, what you want to work on, and what you've already built or broken. No resume polish required — we read for curiosity and follow-through.</p>
-      <a class="btn btn-primary" href="#">Start your application <span class="arrow">→</span></a>
-      <div class="meta">
-        <span>Deadline<strong>Rolling · Fall '26</strong></span>
-        <span>Response<strong>Within 2 weeks</strong></span>
-        <span>Eligibility<strong>High school students</strong></span>
-      </div>
-    </aside>
-
-    <div class="apply-tracks stagger reveal">
-
-      <article class="track" id="researchers">
-        <div class="track-k"><span>— Researchers</span><span class="n">Track 01 / 03</span></div>
-        <h4>For students who ask questions most people <em>skip.</em></h4>
-        <p>Join a research team of 3–5. Dig into a focused AI/ML question, publish a paper, and ship an artifact alongside it — a model, a tool, a dataset, a demo.</p>
-        <ul class="track-list">
-          <li>Paired with a mentor</li>
-          <li>Weekly team sync</li>
-          <li>Paper + applied artifact</li>
-          <li>Published on the Axiom Journal</li>
-        </ul>
-        <div class="track-foot">
-          <span>8-week sprint · teams of 3–5</span>
-          <a href="#">Apply as a researcher →</a>
-        </div>
-      </article>
-
-      <article class="track" id="builders">
-        <div class="track-k"><span>— Builders</span><span class="n">Track 02 / 03</span></div>
-        <h4>For students who'd rather ship than <em>speculate.</em></h4>
-        <p>Get placed with a partner startup or build a real product with a small Axiom team. Scoped work, shipped publicly, mentored directly by founders and engineers.</p>
-        <ul class="track-list">
-          <li>Embedded with a partner startup</li>
-          <li>Open-source by default</li>
-          <li>Founder &amp; engineer mentorship</li>
-          <li>Real feature or tool, shipped</li>
-        </ul>
-        <div class="track-foot">
-          <span>8-week placement · individual or pair</span>
-          <a href="#">Apply as a builder →</a>
-        </div>
-      </article>
-
-      <article class="track" id="founding">
-        <div class="track-k"><span>— Founding team</span><span class="n">Track 03 / 03</span></div>
-        <h4>Leads for tech, operations &amp; <em>publishing.</em></h4>
-        <p>We're recruiting three founding board members to help run cohorts, mentor teams, and shape the Axiom Journal. Ground-floor ownership of a nonprofit in formation.</p>
-        <ul class="track-list">
-          <li>Tech Lead — projects &amp; mentorship</li>
-          <li>Operations Lead — cohorts &amp; partners</li>
-          <li>Content Lead — site &amp; journal</li>
-          <li>Board-level involvement</li>
-        </ul>
-        <div class="track-foot">
-          <span>Ongoing commitment · remote-friendly</span>
-          <a href="#">Apply for a board seat →</a>
-        </div>
-      </article>
-
+<section class="reveal" id="tracks">
+  <div class="section-head">
+    <div>
+      <div class="section-eyebrow">— The three tracks</div>
+      <h2 class="section-title">Pick the <em>door</em> that fits.</h2>
+    </div>
+    <p class="section-sub">All three tracks ask the same thing first: write a short letter on what you actually want to build, and why. We read every one.</p>
+  </div>
+  <div class="mission-grid">
+    <div class="mission-cell apply-cell">
+      <div class="cell-num">Track 01</div>
+      <h4>Join a chapter</h4>
+      <p>For high schoolers anywhere. Run through the AI, CS, and marketing tracks with a chapter near you. Most-passionate members earn internship placements at real startups.</p>
+      <a class="btn btn-primary apply-btn" href="#letter">Start application <span class="arrow">→</span></a>
+    </div>
+    <div class="mission-cell apply-cell">
+      <div class="cell-num">Track 02</div>
+      <h4>Lead a chapter</h4>
+      <p>For students who want to start the first chapter in their city. You get the curriculum, mentorship, and the Stanford KID rollout playbook — you bring the room and the energy.</p>
+      <a class="btn btn-primary apply-btn" href="#letter">Start application <span class="arrow">→</span></a>
+    </div>
+    <div class="mission-cell apply-cell">
+      <div class="cell-num">Track 03</div>
+      <h4>Founding team</h4>
+      <p>Two seats remain on the founding team. We're looking for the most passionate builders — people who want a real hand in shaping how Axiom grows worldwide.</p>
+      <a class="btn btn-primary apply-btn" href="#letter">Start application <span class="arrow">→</span></a>
     </div>
   </div>
 </section>
 
-<!-- FAQ (shared) -->
-<section>
-  <div class="section-head reveal">
+<section class="reveal" id="letter">
+  <div class="section-head">
     <div>
-      <div class="section-eyebrow">— Frequently asked</div>
-      <h2 class="section-title">Questions, <em>answered.</em></h2>
+      <div class="section-eyebrow">— The letter</div>
+      <h2 class="section-title">One letter. <em>That's the application.</em></h2>
+    </div>
+    <p class="section-sub">No résumé. No GPA. No prior experience required. Just write a few paragraphs on what you want to build, why it matters to you, and which track you're applying to.</p>
+  </div>
+  <div class="mission-grid">
+    <div class="mission-cell">
+      <div class="cell-num">Q1</div>
+      <h4>What do you want to build?</h4>
+      <p>The thing — the actual thing — you'd want to spend a year working on. Be specific. Describe it like it already exists.</p>
+    </div>
+    <div class="mission-cell">
+      <div class="cell-num">Q2</div>
+      <h4>Why does it matter to you?</h4>
+      <p>What makes this not just interesting but worth your weekends? We pick by passion, so this question carries more weight than any other.</p>
+    </div>
+    <div class="mission-cell">
+      <div class="cell-num">Q3</div>
+      <h4>Which track?</h4>
+      <p>Member, chapter lead, or founding team. If you're not sure, pick the one that feels closest and tell us why.</p>
     </div>
   </div>
-
-  <div class="faq-list reveal">
-    <details class="faq">
-      <summary>Who can apply? <span class="plus">+</span></summary>
-      <p class="ans">Any high school student with a serious interest in AI or computer science. You don't need a perfect GPA or a long resume — we care most about curiosity, follow-through, and how you think.</p>
-    </details>
-    <details class="faq">
-      <summary>Does it cost anything? <span class="plus">+</span></summary>
-      <p class="ans">No. Axiom is a nonprofit. Participation is free, and we're building it to stay that way.</p>
-    </details>
-    <details class="faq">
-      <summary>How much time does a cohort take? <span class="plus">+</span></summary>
-      <p class="ans">Expect 5–8 hours per week for 8 weeks. That includes a weekly team sync, mentor office hours, and the research or building work itself.</p>
-    </details>
-    <details class="faq">
-      <summary>Do I need prior AI/ML experience? <span class="plus">+</span></summary>
-      <p class="ans">No — but you should be comfortable reading code and willing to learn fast. Teams are matched so beginners and advanced students can both contribute meaningfully.</p>
-    </details>
-    <details class="faq">
-      <summary>How do I join the founding team? <span class="plus">+</span></summary>
-      <p class="ans">We're actively recruiting a Tech Lead, Operations Lead, and Content / Publishing Lead. Reach out via the apply link and tell us what role you're most drawn to and why.</p>
-    </details>
+  <div class="cta-row apply-cta-row">
+    <a class="btn btn-primary" href="mailto:apply@axiom.org">Email your letter <span class="arrow">→</span></a>
+    <a class="btn btn-ghost" href="faq.html">Read the FAQ first</a>
   </div>
 </section>
 
-<!-- Footer -->
-<footer>
-  <div class="big"><em>Build real things.</em> Publish them. Help the next high schooler do the same.</div>
-  <div class="fi">
+<section class="cta-band reveal">
+  <div class="cta-inner">
+    <h2 class="section-title">No <em>credentials</em> required.</h2>
+    <p class="section-sub">We pick the most passionate, not the most decorated. If you've read this far, you're already on the path.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#letter">Start your letter <span class="arrow">→</span></a>
+      <a class="btn btn-ghost" href="chapters.html">See chapters</a>
+    </div>
+  </div>
+</section>
+
+<footer class="f">
+  <div class="f-big"><em>Teach the foundations.</em> Send the most passionate to real startups. Build a global pipeline.</div>
+  <div class="f-cols">
     <div>
-      <a class="logo" href="index.html" style="color:#fff"><span class="mark" style="background:radial-gradient(circle at 30% 30%, #fff 0%, #8aa0ff 40%, #1f46ff 100%)"></span> Axiom</a>
-      <p style="color:rgba(255,255,255,.55);font-size:13.5px;max-width:320px;margin-top:16px;line-height:1.55">A student-led nonprofit giving high schoolers the teams, mentorship, and platform to do real AI research.</p>
+      <a class="f-brand" href="index.html"><span class="mk"></span> Axiom</a>
+      <p class="f-blurb">A global student-led nonprofit teaching high schoolers the foundations of modern startups — AI, CS, and marketing.</p>
     </div>
     <div>
-      <h6>Programs</h6>
+      <h6>Program</h6>
       <ul>
-        <li><a href="programs.html#research">Research Division</a></li>
-        <li><a href="programs.html#startup">Startup Division</a></li>
-        <li><a href="research.html">Research</a></li>
+        <li><a href="programs.html">Curriculum</a></li>
+        <li><a href="chapters.html">Chapters</a></li>
+        <li><a href="apply.html">Apply</a></li>
       </ul>
     </div>
     <div>
       <h6>Organization</h6>
       <ul>
         <li><a href="about.html">About</a></li>
-        <li><a href="about.html#journal">Journal</a></li>
-        <li><a href="apply.html">Apply</a></li>
+        <li><a href="about.html#partner">Stanford KID</a></li>
+        <li><a href="faq.html">FAQ</a></li>
       </ul>
     </div>
     <div>
@@ -233,12 +190,24 @@
       </ul>
     </div>
   </div>
-  <div class="bottom">
+  <div class="f-bottom">
     <span>© 2026 AXIOM — A 501(c)(3) IN FORMATION</span>
-    <span>LOUISVILLE, KY</span>
+    <span>GLOBAL · PARTNERED WITH STANFORD KID</span>
   </div>
 </footer>
 
-<script src="app.js"></script>
+<script>
+  (function(){
+    const body = document.body;
+    const btn  = document.getElementById('menuBtn');
+    const close = document.getElementById('menuClose');
+    function open(){ body.classList.add('menu-open'); btn.setAttribute('aria-expanded','true'); }
+    function shut(){ body.classList.remove('menu-open'); btn.setAttribute('aria-expanded','false'); }
+    btn.addEventListener('click', () => body.classList.contains('menu-open') ? shut() : open());
+    close.addEventListener('click', shut);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') shut(); });
+  })();
+</script>
+
 </body>
 </html>

@@ -1,117 +1,611 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Axiom — A nonprofit for high schoolers in AI</title>
-<meta name="description" content="Axiom gives high school students the teams, mentorship, and platform to collaborate on AI research, ship real projects, and publish their work." />
-<link rel="preconnect" href="https://api.fontshare.com" crossorigin />
-<link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,300i,400i,500i,700i&f[]=neue-montreal@300,400,500,700,300i,400i,500i,700i&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css" />
-<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Axiom — A nonprofit for high schoolers in entrepreneurship</title>
+  <meta name="description" content="Axiom is a global student-led nonprofit teaching AI, CS, and marketing — the foundations of modern startups — through chapters that send their most passionate members to intern at real companies." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --paper: #ffffff;
+      --ink: #0a0a0a;
+      --line: rgba(10, 10, 10, 0.10);
+      --line-soft: rgba(10, 10, 10, 0.055);
+      --muted: #6b6b6b;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100%; min-height: 100%; }
+    body {
+      background-color: var(--paper);
+      background-image:
+        linear-gradient(var(--line-soft) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+      background-size: 40px 40px;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+      color: var(--ink);
+      overflow-x: hidden;
+    }
+    body.menu-open { overflow: hidden; }
+    button { font: inherit; color: inherit; background: transparent; border: 0; cursor: pointer; }
+
+    /* ===================== LANDING PAGE ===================== */
+    main.hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 32px;
+    }
+
+    .meta-label {
+      position: absolute;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      z-index: 6;
+      text-transform: uppercase;
+    }
+    .meta-label.open-call { top: 36px; left: 36px; }
+    .meta-label.open-call::before {
+      content: "+";
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .meta-label.cohort { top: 36px; right: 36px; }
+    .meta-label.cohort::before {
+      content: "";
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: var(--ink);
+      display: inline-block;
+      box-shadow: 0 0 0 3px rgba(10, 10, 10, 0.10);
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 18px;
+    }
+    .eyebrow::before, .eyebrow::after {
+      content: "";
+      width: 32px; height: 1px;
+      background: var(--ink);
+      opacity: 0.85;
+    }
+
+    /* cycling word */
+    .research-word {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: clamp(90px, 14vw, 220px);
+      line-height: 1;
+      color: var(--ink);
+      letter-spacing: -0.03em;
+      position: relative;
+      padding: 0 14px 14px;
+      display: inline-block;
+      cursor: pointer;
+      transition: opacity .2s ease;
+    }
+    .research-word:hover { opacity: 0.78; }
+    .research-word::after {
+      content: "";
+      position: absolute;
+      left: 18px;
+      right: 80px;
+      bottom: 22px;
+      height: 3px;
+      background: var(--ink);
+      transform-origin: left;
+      transform: scaleX(1);
+      transition: transform .5s cubic-bezier(.7,.05,.2,1);
+    }
+    .word-text {
+      display: inline-block;
+      transition: opacity .32s ease, transform .32s ease;
+    }
+    .word-text.is-out { opacity: 0; transform: translateY(14px); }
+
+    /* picker */
+    .picker {
+      position: absolute;
+      left: 50%;
+      top: calc(50% + clamp(80px, 11vw, 160px));
+      transform: translateX(-50%) translateY(-12px);
+      display: flex;
+      gap: 1px;
+      background: rgba(10, 10, 10, 0.10);
+      border: 1px solid rgba(10, 10, 10, 0.10);
+      border-radius: 4px;
+      overflow: hidden;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .35s ease, transform .35s cubic-bezier(.2,.7,.2,1);
+      z-index: 7;
+      box-shadow: 0 24px 60px -32px rgba(10, 10, 10, 0.35);
+    }
+    .picker.is-open {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+      pointer-events: auto;
+    }
+    .picker > a {
+      background: var(--paper);
+      padding: 14px 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      text-decoration: none;
+      color: var(--ink);
+      transition: background .22s ease, color .22s ease;
+      min-width: 130px;
+    }
+    .picker > a:hover { background: var(--ink); color: var(--paper); }
+    .picker > a.is-selected { background: var(--ink); color: var(--paper); }
+    .picker > a em {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 16px;
+      letter-spacing: -0.01em;
+    }
+    .picker > a span.k {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 9.5px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.55;
+    }
+
+    /* menu trigger (4-dot grid handle) */
+    .menu-btn {
+      position: fixed;
+      right: 32px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 50;
+      display: grid;
+      grid-template-columns: 8px 8px;
+      grid-template-rows: 8px 8px;
+      gap: 6px;
+      padding: 10px;
+      border-radius: 6px;
+      transition: background .25s ease;
+    }
+    .menu-btn:hover { background: rgba(10, 10, 10, 0.06); }
+    .menu-btn i {
+      background: var(--ink);
+      border-radius: 1px;
+      display: block;
+      transition: background .25s ease, transform .35s cubic-bezier(.7,.05,.2,1);
+    }
+    body.menu-open .menu-btn i { background: var(--paper); }
+    body.menu-open .menu-btn i:nth-child(1) { transform: translate(3px, 3px); }
+    body.menu-open .menu-btn i:nth-child(2) { transform: translate(-3px, 3px); }
+    body.menu-open .menu-btn i:nth-child(3) { transform: translate(3px, -3px); }
+    body.menu-open .menu-btn i:nth-child(4) { transform: translate(-3px, -3px); }
+
+    /* ===================== MENU OVERLAY ===================== */
+    .menu-overlay {
+      position: fixed;
+      inset: 0;
+      background: var(--ink);
+      color: var(--paper);
+      z-index: 40;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      padding: 56px 56px 36px;
+      clip-path: circle(0px at calc(100% - 48px) 50%);
+      transition: clip-path .8s cubic-bezier(.22, 1, .36, 1);
+      will-change: clip-path;
+    }
+    body.menu-open .menu-overlay {
+      pointer-events: auto;
+      clip-path: circle(220vmax at calc(100% - 48px) 50%);
+    }
+
+    .menu-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.55);
+      opacity: 0;
+      transform: translateY(-12px);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+    body.menu-open .menu-top { opacity: 1; transform: translateY(0); transition-delay: .55s; }
+    .menu-top .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--paper);
+    }
+    .menu-top .brand .mk {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: var(--paper);
+    }
+    .menu-top .brand .slash { color: rgba(255, 255, 255, 0.45); }
+
+    .menu-cols {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 0;
+      align-items: stretch;
+      margin-top: 56px;
+      border-top: 1px solid rgba(255, 255, 255, 0.12);
+    }
+    .menu-col {
+      padding: 28px 22px 24px;
+      border-right: 1px solid rgba(255, 255, 255, 0.12);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      text-decoration: none;
+      color: var(--paper);
+      position: relative;
+      overflow: hidden;
+      min-width: 0;
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1);
+    }
+    .menu-col::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--paper);
+      transform: translateY(101%);
+      transition: transform .5s cubic-bezier(.7,.05,.2,1);
+      z-index: 0;
+    }
+    .menu-col:hover::before { transform: translateY(0); }
+    .menu-col:hover { color: var(--ink); }
+    .menu-col > * { position: relative; z-index: 1; }
+    body.menu-open .menu-col {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    body.menu-open .menu-col:nth-child(1) { transition-delay: .55s; }
+    body.menu-open .menu-col:nth-child(2) { transition-delay: .63s; }
+    body.menu-open .menu-col:nth-child(3) { transition-delay: .71s; }
+    body.menu-open .menu-col:nth-child(4) { transition-delay: .79s; }
+    body.menu-open .menu-col:nth-child(5) { transition-delay: .87s; }
+    body.menu-open .menu-col:nth-child(6) { transition-delay: .95s; }
+    .menu-col:last-child { border-right: 0; }
+
+    .menu-col-glyph {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+    }
+    .menu-col:hover .menu-col-glyph { color: rgba(10, 10, 10, 0.55); }
+    .menu-col-num {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.20em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 18px;
+    }
+    .menu-col:hover .menu-col-num { color: rgba(10, 10, 10, 0.6); }
+    .menu-col-num .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--paper);
+    }
+    .menu-col:hover .menu-col-num .dot { background: var(--ink); }
+    .menu-col-rule {
+      height: 1px;
+      background: rgba(255, 255, 255, 0.18);
+      margin: 18px 0 22px;
+    }
+    .menu-col:hover .menu-col-rule { background: rgba(10,10,10,.2); }
+    .menu-col-title {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
+      font-style: italic;
+      font-weight: 500;
+      font-size: clamp(26px, 2.6vw, 40px);
+      line-height: 1.02;
+      letter-spacing: -0.03em;
+      color: var(--paper);
+      transition: color .25s ease;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: clip;
+    }
+    .menu-col:hover .menu-col-title { color: var(--ink); }
+    .menu-col-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 12.5px;
+      line-height: 1.5;
+      color: rgba(255, 255, 255, 0.65);
+      margin-top: 18px;
+      max-width: 22ch;
+    }
+    .menu-col:hover .menu-col-desc { color: rgba(10,10,10,.7); }
+    .menu-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.55);
+      margin-top: 36px;
+    }
+    .menu-bottom .blip {
+      display: inline-block;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: var(--paper);
+      box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.18);
+      margin-right: 8px;
+      animation: blip 1.5s ease-in-out infinite;
+    }
+    .menu-close {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--paper);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+    .menu-close .x {
+      width: 22px; height: 22px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255, 255, 255, 0.45);
+      border-radius: 50%;
+      font-size: 13px;
+    }
+    @keyframes blip {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: .55; }
+    }
+
+    /* on-load fade for landing elements (no intro overlay anymore) */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(14px);
+      animation: revealUp .8s cubic-bezier(.2,.7,.2,1) forwards;
+    }
+    .fade-in:nth-child(1) { animation-delay: .05s; }
+    .fade-in:nth-child(2) { animation-delay: .15s; }
+    .fade-in:nth-child(3) { animation-delay: .25s; }
+    .fade-in:nth-child(4) { animation-delay: .35s; }
+    @keyframes revealUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 900px) {
+      .meta-label.open-call { top: 24px; left: 24px; }
+      .meta-label.cohort    { top: 24px; right: 24px; }
+      .menu-cols { grid-template-columns: 1fr 1fr; }
+      .menu-col { border-right: 0; border-bottom: 1px solid rgba(255,255,255,0.12); }
+      .menu-overlay { padding: 36px 24px 24px; }
+    }
+  </style>
 </head>
 <body>
 
-<div class="topbar">
-  <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menuOverlay" aria-label="Open menu">
-    <span class="menu-ico" aria-hidden="true">
-      <svg viewBox="0 0 32 32">
-        <line class="m-line" x1="2"  y1="10" x2="30" y2="10"/>
-        <line class="m-line" x1="2"  y1="22" x2="30" y2="22"/>
-        <line class="m-line" x1="10" y1="2"  x2="10" y2="30"/>
-        <line class="m-line" x1="22" y1="2"  x2="22" y2="30"/>
-        <circle class="m-dot" cx="10" cy="10" r="3.2"/>
-        <circle class="m-dot" cx="10" cy="22" r="3.2"/>
-        <circle class="m-dot" cx="22" cy="22" r="3.2"/>
-        <path class="m-arrow-line" d="M10 22 L22 10"/>
-        <path class="m-arrow-head" d="M22 10 L17 10 M22 10 L22 15"/>
-      </svg>
-    </span>
+  <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false">
+    <i></i><i></i><i></i><i></i>
   </button>
-</div>
 
-<div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-label="Site menu">
-  <div class="menu-overlay-top">
-    <span class="menu-overlay-brand">
-      <span class="mk" aria-hidden="true"></span>
-      <span>Axiom</span>
-      <span class="slash">/</span>
-      <span class="ix">Index · 05</span>
-    </span>
-    <button class="menu-close" id="menuClose" type="button">Close <span class="x" aria-hidden="true">×</span></button>
-  </div>
-  <div class="menu-columns">
-    <a class="menu-col" href="about.html">
-      <span class="menu-col-glyph">// Axiom · 01</span>
-      <div class="menu-col-num"><span>01 — About</span><span class="dot"></span></div>
-      <div class="menu-col-rule"></div>
-      <h3 class="menu-col-title">About<span class="tdot" aria-hidden="true"></span></h3>
-      <p class="menu-col-desc">The founders, who we are, and the journal that publishes our work.</p>
-    </a>
-    <a class="menu-col" href="programs.html">
-      <span class="menu-col-glyph">// Axiom · 02</span>
-      <div class="menu-col-num"><span>02 — Programs</span><span class="dot"></span></div>
-      <div class="menu-col-rule"></div>
-      <h3 class="menu-col-title">Programs<span class="tdot" aria-hidden="true"></span></h3>
-      <p class="menu-col-desc">Two divisions — Research and Startup — where curiosity becomes shipped work.</p>
-    </a>
-    <a class="menu-col" href="research.html">
-      <span class="menu-col-glyph">// Axiom · 03</span>
-      <div class="menu-col-num"><span>03 — Research</span><span class="dot"></span></div>
-      <div class="menu-col-rule"></div>
-      <h3 class="menu-col-title">Research<span class="tdot" aria-hidden="true"></span></h3>
-      <p class="menu-col-desc">More rigorous, more collaborative, more published — built for high schoolers.</p>
-    </a>
-    <a class="menu-col" href="apply.html">
-      <span class="menu-col-glyph">// Axiom · 04</span>
-      <div class="menu-col-num"><span>04 — Apply</span><span class="dot"></span></div>
-      <div class="menu-col-rule"></div>
-      <h3 class="menu-col-title">Apply<span class="tdot" aria-hidden="true"></span></h3>
-      <p class="menu-col-desc">Openings for researchers, builders, and the founding team. Fall '26.</p>
-    </a>
-    <a class="menu-col" href="faq.html">
-      <span class="menu-col-glyph">// Axiom · 05</span>
-      <div class="menu-col-num"><span>05 — FAQ</span><span class="dot"></span></div>
-      <div class="menu-col-rule"></div>
-      <h3 class="menu-col-title">FAQ<span class="tdot" aria-hidden="true"></span></h3>
-      <p class="menu-col-desc">Questions about cost, time, eligibility, and joining the founding team.</p>
-    </a>
-  </div>
-  <div class="menu-overlay-bottom">
-    <span>System online</span>
-    <span><span class="m-blip" aria-hidden="true"></span> Fall '26 cohort · applications open</span>
-    <span>Louisville / KY</span>
-  </div>
-</div>
+  <main class="hero">
+    <div class="meta-label open-call fade-in">OPEN CALL &middot; APPLY</div>
+    <div class="meta-label cohort fade-in">FALL '26 COHORT</div>
+    <div class="eyebrow fade-in">I'M CURIOUS ABOUT</div>
 
-<header class="hero hero-solo">
-  <div class="curious" id="curious" data-open="false">
-    <span class="curious-tick t1"><span class="s">✦</span> Open call · apply</span>
-    <div class="curious-card" id="curiousCard" role="button" tabindex="0" aria-expanded="false" aria-haspopup="listbox">
-      <div class="curious-corner"><span class="blip"></span> Fall '26 cohort</div>
-      <div class="curious-stack">
-        <div class="curious-eyebrow">I'm curious about</div>
-        <h2 class="curious-prompt">
-          <span class="curious-word-wrap">
-            <span class="curious-word is-active" data-i="0">research.</span>
-            <span class="curious-word" data-i="1">startups.</span>
-            <span class="curious-word" data-i="2">positions.</span>
-            <span class="curious-word" data-i="3">building.</span>
-            <span class="curious-word" data-i="4">AI.</span>
-          </span>
-        </h2>
-      </div>
+    <button class="research-word fade-in" id="curiousWord" type="button" aria-haspopup="listbox" aria-expanded="false">
+      <span class="word-text" id="wordText">startups.</span>
+    </button>
+
+    <div class="picker" id="picker" role="listbox" aria-label="What are you curious about?">
+      <a href="programs.html" data-i="0" data-word="startups." class="is-selected"><em>Startups</em><span class="k">01 / Internships</span></a>
+      <a href="about.html" data-i="1" data-word="entrepreneurship."><em>Entrepreneurship</em><span class="k">02 / Mission</span></a>
+      <a href="chapters.html" data-i="2" data-word="chapters."><em>Chapters</em><span class="k">03 / Worldwide</span></a>
+      <a href="programs.html#curriculum" data-i="3" data-word="AI."><em>AI &amp; CS</em><span class="k">04 / Curriculum</span></a>
+      <a href="programs.html#curriculum" data-i="4" data-word="marketing."><em>Marketing</em><span class="k">05 / Curriculum</span></a>
     </div>
-    <div class="curious-panel" id="curiousPanel" role="listbox" aria-label="What are you curious about?">
-      <button class="curious-opt is-selected" type="button" role="option" data-i="0"><span><em>Research</em></span><span class="i">01 / Papers</span></button>
-      <button class="curious-opt" type="button" role="option" data-i="1"><span><em>Startups</em></span><span class="i">02 / Builds</span></button>
-      <button class="curious-opt" type="button" role="option" data-i="2"><span><em>Positions</em></span><span class="i">03 / Founding team</span></button>
-      <button class="curious-opt" type="button" role="option" data-i="3"><span><em>Building</em></span><span class="i">04 / Labs</span></button>
-      <button class="curious-opt" type="button" role="option" data-i="4"><span><em>AI</em></span><span class="i">05 / Mission</span></button>
+  </main>
+
+  <!-- MENU OVERLAY -->
+  <div class="menu-overlay" id="menuOverlay" role="dialog" aria-modal="true" aria-label="Site menu">
+    <div class="menu-top">
+      <span class="brand">
+        <span class="mk" aria-hidden="true"></span>
+        <span>Axiom</span>
+        <span class="slash">/</span>
+        <span>Index &middot; 06</span>
+      </span>
+      <button class="menu-close" id="menuClose" type="button">Close <span class="x" aria-hidden="true">&times;</span></button>
+    </div>
+
+    <div class="menu-cols">
+      <a class="menu-col" href="index.html">
+        <div>
+          <span class="menu-col-glyph">// Axiom &middot; 01</span>
+          <div class="menu-col-num"><span>01 &mdash; Home</span><span class="dot"></span></div>
+          <div class="menu-col-rule"></div>
+          <h3 class="menu-col-title">Home</h3>
+        </div>
+        <p class="menu-col-desc">Back to the landing &mdash; the I'm-curious-about picker and the Axiom front door.</p>
+      </a>
+      <a class="menu-col" href="about.html">
+        <div>
+          <span class="menu-col-glyph">// Axiom &middot; 02</span>
+          <div class="menu-col-num"><span>02 &mdash; About</span><span class="dot"></span></div>
+          <div class="menu-col-rule"></div>
+          <h3 class="menu-col-title">About</h3>
+        </div>
+        <p class="menu-col-desc">The founders, the mission, and our partnership with Stanford KID.</p>
+      </a>
+      <a class="menu-col" href="programs.html">
+        <div>
+          <span class="menu-col-glyph">// Axiom &middot; 03</span>
+          <div class="menu-col-num"><span>03 &mdash; Programs</span><span class="dot"></span></div>
+          <div class="menu-col-rule"></div>
+          <h3 class="menu-col-title">Programs</h3>
+        </div>
+        <p class="menu-col-desc">AI, CS, and marketing &mdash; the foundations modern startups are built on.</p>
+      </a>
+      <a class="menu-col" href="chapters.html">
+        <div>
+          <span class="menu-col-glyph">// Axiom &middot; 04</span>
+          <div class="menu-col-num"><span>04 &mdash; Chapters</span><span class="dot"></span></div>
+          <div class="menu-col-rule"></div>
+          <h3 class="menu-col-title">Chapters</h3>
+        </div>
+        <p class="menu-col-desc">Local groups around the world. The most passionate get sent to intern.</p>
+      </a>
+      <a class="menu-col" href="apply.html">
+        <div>
+          <span class="menu-col-glyph">// Axiom &middot; 05</span>
+          <div class="menu-col-num"><span>05 &mdash; Apply</span><span class="dot"></span></div>
+          <div class="menu-col-rule"></div>
+          <h3 class="menu-col-title">Apply</h3>
+        </div>
+        <p class="menu-col-desc">Join a chapter, lead a chapter, or apply for the founding team.</p>
+      </a>
+      <a class="menu-col" href="faq.html">
+        <div>
+          <span class="menu-col-glyph">// Axiom &middot; 06</span>
+          <div class="menu-col-num"><span>06 &mdash; FAQ</span><span class="dot"></span></div>
+          <div class="menu-col-rule"></div>
+          <h3 class="menu-col-title">FAQ</h3>
+        </div>
+        <p class="menu-col-desc">How chapters work, how interns get picked, and what it costs (nothing).</p>
+      </a>
+    </div>
+
+    <div class="menu-bottom">
+      <span>System online</span>
+      <span><span class="blip"></span>Fall '26 cohort &middot; applications open</span>
+      <span>Global &middot; partnered with Stanford KID</span>
     </div>
   </div>
-</header>
 
-<script src="app.js"></script>
+  <script>
+  /* ============================================================
+     WORD CYCLER + PICKER + MENU
+     ============================================================ */
+  const wordEl   = document.getElementById('wordText');
+  const wordBtn  = document.getElementById('curiousWord');
+  const picker   = document.getElementById('picker');
+  const pickerOpts = picker.querySelectorAll('a[data-i]');
+  const words = ['startups.', 'entrepreneurship.', 'chapters.', 'AI.', 'marketing.'];
+  let wordIdx = 0;
+  let cycleTimer = null;
+  let userInteracted = false;
+
+  function setWord(i) {
+    wordIdx = ((i % words.length) + words.length) % words.length;
+    wordEl.classList.add('is-out');
+    setTimeout(() => {
+      wordEl.textContent = words[wordIdx];
+      wordEl.classList.remove('is-out');
+    }, 320);
+    pickerOpts.forEach(opt => {
+      opt.classList.toggle('is-selected', Number(opt.dataset.i) === wordIdx);
+    });
+  }
+
+  function startWordCycler() {
+    if (cycleTimer) clearInterval(cycleTimer);
+    cycleTimer = setInterval(() => {
+      if (userInteracted) return;
+      setWord(wordIdx + 1);
+    }, 2400);
+  }
+  startWordCycler();
+
+  function openPicker() {
+    picker.classList.add('is-open');
+    wordBtn.setAttribute('aria-expanded', 'true');
+    userInteracted = true;
+  }
+  function closePicker() {
+    picker.classList.remove('is-open');
+    wordBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  wordBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (picker.classList.contains('is-open')) closePicker();
+    else openPicker();
+  });
+
+  pickerOpts.forEach((opt) => {
+    opt.addEventListener('mouseenter', () => {
+      const i = Number(opt.dataset.i);
+      if (i !== wordIdx) setWord(i);
+    });
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!picker.contains(e.target) && !wordBtn.contains(e.target)) {
+      closePicker();
+    }
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closePicker();
+      closeMenu();
+    }
+  });
+
+  // MENU
+  const menuBtn = document.getElementById('menuBtn');
+  const menuClose = document.getElementById('menuClose');
+  function openMenu() {
+    document.body.classList.add('menu-open');
+    menuBtn.setAttribute('aria-expanded', 'true');
+  }
+  function closeMenu() {
+    document.body.classList.remove('menu-open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+  }
+  menuBtn.addEventListener('click', () => {
+    if (document.body.classList.contains('menu-open')) closeMenu();
+    else openMenu();
+  });
+  menuClose.addEventListener('click', closeMenu);
+  </script>
 </body>
 </html>
